@@ -36,7 +36,9 @@ class BaseLoader extends \CI_Loader
 	 */
 	public function section($sectionName)
 	{
-		if (!empty($this->sectionName)) throw new Exception("Previous section is still open", 1);
+		if (!empty($this->sectionName))
+			throw new Exception("Previous section is still open", 1);
+
 		$this->sectionName = $sectionName;
 		ob_start();
 	}
@@ -48,7 +50,9 @@ class BaseLoader extends \CI_Loader
 	 */
 	public function endSection()
 	{
-		if (is_null($this->sectionName)) throw new Exception("No section opened", 2);
+		if (is_null($this->sectionName))
+			throw new Exception("No section opened", 2);
+
 		$this->sections[$this->sectionName] = ob_get_clean();
 		$this->sectionName = null;
 	}
@@ -61,9 +65,8 @@ class BaseLoader extends \CI_Loader
 	 */
 	public function renderSection($sectionName)
 	{
-		if (isset($this->sections[$sectionName])) {
+		if (isset($this->sections[$sectionName]))
 			echo $this->sections[$sectionName];
-		}
 	}
 
 	/**
