@@ -1,0 +1,19 @@
+{
+    "name": "azharlihan/ci3modules",
+    "description": "Package untuk extend core  dari codeigniter 3",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Azhar Lihan",
+            "email": "m@azharlihan.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+	"autoload": {
+		"psr-4": {
+			"AzharLihan\\CI3Modules\\": "src/"
+		}
+	}
+}
