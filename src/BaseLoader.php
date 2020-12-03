@@ -30,6 +30,8 @@ class BaseLoader extends CI_Loader
 
 	public function renderSection($name)
 	{
-		echo $this->sections[$name];
+		if (isset($this->sections[$name])) {
+			echo $this->sections[$name];
+		}
 	}
 }
