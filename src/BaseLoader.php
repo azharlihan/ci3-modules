@@ -12,13 +12,19 @@ use Exception;
  */
 class BaseLoader extends \CI_Loader
 {
+	/**
+	 * Determines whether the extend method has been called
+	 *
+	 * @var bool
+	 */
+	protected $extendCalled = false;
 
 	/**
 	 * Store an active section name
 	 *
 	 * @var string
 	 */
-	private $sectionName = '';
+	protected $sectionName;
 
 
 	/**
@@ -26,7 +32,7 @@ class BaseLoader extends \CI_Loader
 	 *
 	 * @var array
 	 */
-	private $sections = array();
+	protected $sections = array();
 
 	/**
 	 * Open a section and start output buffering
@@ -79,6 +85,12 @@ class BaseLoader extends \CI_Loader
 	public function extend($layoutName)
 	{
 		ob_clean();
+
+		if ($this->extendCalled)
+			throw new Exception('Layout is defined and can only be defined once.', 3);
+		else
+			$this->extendCalled = true;
+
 		$this->view($layoutName);
 	}
 }
